@@ -4,24 +4,26 @@ using System.Threading.Tasks;
 
 namespace Bar.Api.Controllers
 {
-    public class HelloController : Controller
+    [ApiController]
+    [Route("[Controller]/[Action]")]
+    public class SayController : Controller
     {
         private readonly IFooService fooService;
 
-        public HelloController(IFooService fooService)
+        public SayController(IFooService fooService)
         {
             this.fooService = fooService;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Hello()
         {
             return Ok("Hello from Bar!");
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> FromFoo()
+        public async Task<IActionResult> HelloToFoo()
         {
             return Ok(await fooService.Hello());
         }

@@ -13,7 +13,7 @@ namespace Bar.Api.Services
         }
         public async Task<string> Hello()
         {
-            return await httpClient.GetStringAsync("hello");
+            return await httpClient.GetStringAsync("say/hello");
         }
     }
 }
